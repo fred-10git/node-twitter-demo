@@ -1,0 +1,25 @@
+const http = require("http");
+const https = require("https");
+const fs = require("fs");
+const env = require(`../env/${process.env.NODE_ENV}.env`);
+const app = require("../app");
+
+const httpServer = http
+  .createServer((q, r) => {
+    const redirectUrl = `https://${q.headers.host}${q.url}`;
+    console.log("HTTP SERVER", redirectUrl);
+    r.writeHead(301, { Location: redirectUrl });
+    r.end();
+  })
+  .listen(env.httpPort);
+
+const httpsServer = https
+  .createServer(
+    {
+      key: fs.readFileSync(env.key),
+      cert: fs.readFileSync(env.cert),
+      passphrase: env.passPhrase
+    },
+    app,
+  )
+  .listen(env.httpsPort);

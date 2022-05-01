@@ -1,0 +1,21 @@
+script(src="/js/profile.js")
+div(class='profile-container me-3 d-flex flex-column bg-white')
+    form(class='d-flex flex-row justify-content-center align-items-center p-3' action="/users/image" method="post" enctype="multipart/form-data")
+        input(id="input-image" type="file" name="avatar" class="d-none")
+        img(id="image-profile" src=`${ user.avatar }` class="img-fluid")
+    div(class='d-flex flex-row justify-content-center align-items-center text-center my-3')
+        p= `${user.username} (${user.local.email})`
+    div(class='d-flex flex-row justify-content-center align-items-center text-center my-3')
+        div(class="flex-fill")
+            p 
+                strong Tweets
+                br
+                span(class="text-primary")= tweets.length 
+        div(class="flex-fill")
+            p
+                strong Abonnements
+                br
+                span(class="text-primary") -
+
+
+

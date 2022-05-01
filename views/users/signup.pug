@@ -1,0 +1,22 @@
+extends ../layout
+
+block content 
+    div(class='d-flex flex-row content justify-content-center mx-auto')
+        form(class='card w-50 mt-5' method='post' action= '/users/signup')
+            .card-header Inscription
+            .card-body 
+                .form-group 
+                    label Pseudo
+                    input(class='form-control' type="text" name='username' placeholder='Pseudo')
+                .form-group 
+                    label Email
+                    input(class='form-control' type="email" name='email' placeholder='Email')
+                .form-group 
+                    label Mot de passe
+                    input(class='form-control' type="password" name='password' placeholder='Mot de passe')                                                
+                if errors 
+                    ul(class="my-2")  
+                        each error in errors 
+                            li(class='text-danger')= error
+                .w-100 
+                    input(type='submit' value='Valider' class='btn btn-primary mt-2 ms-auto d-block')

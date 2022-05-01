@@ -1,0 +1,17 @@
+navbar(class="navbar navbar-expand-lg navbar-light bg-white")
+    a(class="navbar-brand" href="/tweets")
+        img(class="ms-2" width="30" height="30" src="/images/twitter.png")
+    button(class="navbar-toggler")
+        span(class="navbar-toggle-icon")
+    div(class="collapse navbar-collapse mx-2")
+        ul(class="navbar-nav ms-auto")
+            if isAuth
+                li(class="nav-item active")
+                    a(class="btn btn-primary me-3 btn-tweet" href="/tweets/new") Tweet
+                li(class="nav-item")
+                    a(class="nav-link" href="/auth/logout") Déconnexion
+            else
+                li(class="nav-item")
+                    a(class="nav-link" href="/auth/login") Connexion
+                li(class="nav-item")
+                    a(class="nav-link" href="/users/signup") Inscription                
